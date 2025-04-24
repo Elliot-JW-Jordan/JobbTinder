@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Most Useless Website Ever</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        button {
+            background: #ff6b6b;
+            border: none;
+            padding: 1rem 2rem;
+            margin: 1rem;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        .counter {
+            font-size: 3rem;
+            margin: 2rem 0;
+        }
+
+        .spinning {
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        .bounce {
+            animation: bounce 0.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Most Useless Website!</h1>
+        <p>This website serves absolutely no purpose. Enjoy!</p>
+        
+        <div class="counter" id="counter">Counting to never...</div>
+        
+        <button id="uselessButton">Click me! (I do nothing)</button>
+        <button id="helpButton">Need Help?</button>
+        <button id="spinButton">Make Everything Spin!</button>
+        
+        <p id="message"></p>
+    </div>
+
+    <script>
+        let count = 0;
+        const counter = document.getElementById('counter');
+        const uselessButton = document.getElementById('uselessButton');
+        const helpButton = document.getElementById('helpButton');
+        const spinButton = document.getElementById('spinButton');
+        const message = document.getElementById('message');
+
+        // Useless counter that never reaches its goal
+        setInterval(() => {
+            count++;
+            counter.textContent = `Counting to never... (${count})`;
+        }, 1000);
+
+        // Button that does nothing
+        uselessButton.addEventListener('click', () => {
+            message.textContent = "See? I told you it does nothing!";
+            setTimeout(() => {
+                message.textContent = "";
+            }, 2000);
+        });
+
+        // Help button that makes things worse
+        helpButton.addEventListener('click', () => {
+            const elements = document.querySelectorAll('*');
+            elements.forEach(el => {
+                if (el.style.animation) {
+                    el.style.animation = '';
+                } else {
+                    el.style.animation = 'bounce 0.5s infinite';
+                }
+            });
+            message.textContent = "Oops! That didn't help at all!";
+        });
+
+        // Spin button
+        spinButton.addEventListener('click', () => {
+            const elements = document.querySelectorAll('*');
+            elements.forEach(el => {
+                if (el.style.animation) {
+                    el.style.animation = '';
+                } else {
+                    el.style.animation = 'spin 2s linear infinite';
+                }
+            });
+            message.textContent = "Everything's spinning! How useless!";
+        });
+    </script>
+</body>
+</html> 
